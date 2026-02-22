@@ -1,50 +1,43 @@
 import customtkinter as ctk
 
-from core.bootstrap import build_services
-
 from tabs.ps2.ps2_write_tab import PS2WriteTab
 from tabs.ps2.ps2_list_tab import PS2ListTab
-from tabs.ps1.ps1_list_tab import PS1ListTab
 from tabs.ps1.ps1_write_tab import PS1WriteTab
-from tabs.prepare_drive_tab import PrepareDriveTab
+from tabs.ps1.ps1_list_tab import PS1ListTab
+from tabs.formatar.prepare_drive_tab import PrepareDriveTab
 
 
-ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("blue")
+def main():
+    ctk.set_appearance_mode("dark")
+    ctk.set_default_color_theme("blue")
 
+    root = ctk.CTk()
+    root.title("OPL Manager")
+    root.geometry("1200x700")
 
-class App(ctk.CTk):
-    def __init__(self):
-        super().__init__()
+    tabview = ctk.CTkTabview(root)
+    tabview.pack(fill="both", expand=True)
 
-        self.title("PSX Manager")
-        self.geometry("1000x650")
+    # PS2
+    ps2_write_tab = tabview.add("PS2 Gravar")
+    PS2WriteTab(ps2_write_tab).pack(fill="both", expand=True)
 
-        self.services = build_services()
+    ps2_list_tab = tabview.add("PS2 Lista")
+    PS2ListTab(ps2_list_tab).pack(fill="both", expand=True)
 
-        self.protocol("WM_DELETE_WINDOW", self.on_close)
+    # PS1
+    ps1_write_tab = tabview.add("PS1 Gravar")
+    PS1WriteTab(ps1_write_tab).pack(fill="both", expand=True)
 
-        self.tabview = ctk.CTkTabview(self)
-        self.tabview.pack(fill="both", expand=True)
+    ps1_list_tab = tabview.add("PS1 Lista")
+    PS1ListTab(ps1_list_tab).pack(fill="both", expand=True)
 
-        tab_ps2_write = self.tabview.add("PS2 Gravação")
-        tab_ps2_list = self.tabview.add("PS2 Lista")
-        tab_ps1_write = self.tabview.add("PS1 Gravação")
-        tab_ps1_list = self.tabview.add("PS1 Lista")
-        tab_prepare = self.tabview.add("Preparar Unidade")
+    # FORMATAR
+    format_tab = tabview.add("Formatar")
+    PrepareDriveTab(format_tab).pack(fill="both", expand=True)
 
-        PS2WriteTab(tab_ps2_write, self.services)
-        PS2ListTab(tab_ps2_list, self.services)
-        PS1WriteTab(tab_ps1_write, self.services)
-        PS1ListTab(tab_ps1_list, self.services)
-        PrepareDriveTab(tab_prepare, self.services)
-
-    def on_close(self):
-        if hasattr(self, "services"):
-            self.services.close()
-        self.destroy()
+    root.mainloop()
 
 
 if __name__ == "__main__":
-    app = App()
-    app.mainloop()
+    main()

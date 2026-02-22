@@ -1,0 +1,8 @@
+
+        select disk 3
+        clean
+        convert mbr
+        create partition primary
+        assign letter=G
+        exit
+        

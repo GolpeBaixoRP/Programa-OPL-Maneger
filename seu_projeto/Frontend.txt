@@ -1,0 +1,202 @@
+# 🎮 OPL Manager — PS1 & PS2
+
+Gerenciador moderno para preparação de unidades e gravação de jogos compatíveis com **OPL (Open PS2 Loader)** e **POPStarter**.
+
+Aplicação desktop desenvolvida em **Python + CustomTkinter**, com arquitetura modular, híbrida e preparada para expansão.
+
+---
+
+## ✨ Principais Recursos
+
+* 🌓 Interface moderna em modo dark
+* 💿 Gerenciamento de jogos PS2
+* 🎮 Gerenciamento de jogos PS1
+* 📦 Preparação completa de unidades USB/HDD
+* 🧠 Arquitetura modular e escalável
+* 🔌 Execução híbrida (Standalone + Integrada)
+* 📊 Barras de progresso duplas
+* 🛠️ Instalação automática de estrutura OPL
+* 🧩 Instalação do POPStarter
+
+---
+
+## 🧱 Arquitetura do Projeto
+
+O projeto foi projetado com filosofia **modular híbrida**, onde cada aba pode:
+
+* ✅ Rodar standalone (isoladamente)
+* ✅ Rodar integrada via `main.py`
+* ✅ Receber serviços por injeção de dependência
+* ✅ Ser expandida sem quebrar o sistema
+
+---
+
+## 📁 Estrutura de Pastas
+
+```
+seu_projeto/
+│
+├── assets/
+│
+├── core/
+│   └── data/
+│
+├── database/
+│
+├── tabs/
+│   ├── formatar/
+│   │   ├── __init__.py
+│   │   └── prepare_drive_tab.py
+│   │
+│   ├── ps1/
+│   │   ├── __init__.py
+│   │   ├── ps1_list_tab.py
+│   │   └── ps1_write_tab.py
+│   │
+│   └── ps2/
+│       ├── __init__.py
+│       ├── ps2_list_tab.py
+│       └── ps2_write_tab.py
+│
+└── main.py
+```
+
+⚠️ **Regra obrigatória:** todos os nomes de pastas são minúsculos.
+
+---
+
+## 🚀 Como Executar
+
+### 🔹 Modo Integrado (Aplicação completa)
+
+Na raiz do projeto:
+
+```bash
+python main.py
+```
+
+---
+
+### 🔹 Modo Standalone (por aba)
+
+Exemplo PS2 Write:
+
+```bash
+python tabs/ps2/ps2_write_tab.py
+```
+
+Isso é útil para:
+
+* 🧪 testes isolados
+* 🎨 ajustes de layout
+* 🐛 debug rápido
+
+---
+
+## 🖥️ Abas Implementadas
+
+| Aba           | Descrição               | Status |
+| ------------- | ----------------------- | ------ |
+| PS2 List      | Lista jogos PS2         | ✅      |
+| PS2 Write     | Grava jogos PS2         | ✅      |
+| PS1 List      | Lista jogos PS1         | ✅      |
+| PS1 Write     | Grava jogos PS1         | ✅      |
+| Prepare Drive | Formatação e preparação | ✅      |
+
+---
+
+## 💾 Prepare Drive — Recursos
+
+* Detecção de unidade (USB/Físico)
+* Identificação MBR/GPT
+* Sistemas de arquivos:
+
+  * FAT32
+  * NTFS
+  * exFAT
+* Modos de formatação:
+
+  * Rápido
+  * Normal
+  * Avançado
+* Instalação automática:
+
+  * Estrutura OPL
+  * POPStarter
+
+---
+
+## 🎨 Padrões de Interface
+
+* 🌙 Tema dark obrigatório
+* 🔤 Texto claro
+* 📐 Layout PS1 = PS2 padronizado
+* 📊 Dupla barra de progresso no write
+* 🧩 Grid de 3 colunas nas listas
+
+---
+
+## 🧠 Tecnologias Utilizadas
+
+* Python 3.x
+* CustomTkinter
+* Arquitetura modular
+* Programação orientada a objetos
+
+---
+
+## 🔮 Roadmap (Próximas Etapas)
+
+* [ ] Backend real de leitura de jogos
+* [ ] Escrita real via OPL
+* [ ] Serviço de dispositivos
+* [ ] Barra de progresso real
+* [ ] Tratamento robusto de erros
+* [ ] Empacotamento para `.exe`
+* [ ] Sistema de logs persistente
+
+---
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas.
+
+Para contribuir:
+
+1. Fork o projeto
+2. Crie uma branch
+3. Commit suas mudanças
+4. Abra um Pull Request
+
+---
+
+## ⚠️ Observações Importantes
+
+* Pastas devem permanecer em **minúsculo**
+* Cada módulo deve conter `__init__.py`
+* `__pycache__` pode ser ignorado no versionamento
+
+Sugestão de `.gitignore`:
+
+```
+__pycache__/
+*.pyc
+```
+
+---
+
+## 📜 Licença
+
+Este projeto está sob a licença definida pelo repositório.
+
+---
+
+## 🏁 Status do Projeto
+
+> 🟢 Interface gráfica estabilizada
+> 🟢 Arquitetura híbrida validada
+> 🟡 Backend em evolução
+
+---
+
+💡 Projeto focado em organização, performance e compatibilidade com OPL.
